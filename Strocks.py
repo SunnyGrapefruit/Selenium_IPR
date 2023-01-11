@@ -3,11 +3,10 @@ from json import JSONEncoder
 
 from selenium import webdriver
 
-options = webdriver.ChromeOptions()
+# options = webdriver.ChromeOptions()
 # chrome_driver_binary = 'C:\chromedriver\chromedriver.exe'
-driver = webdriver.Chrome(executable_path = 'C:\chromedriver\chromedriver.exe', options = options )
+driver = webdriver.Chrome()
 
-# driver = webdriver.Chrome(executable_path="C:\chromedriver", options=chrome_options)
 
 class Stocks:
     def __init__(self, id, name, price, link):
@@ -41,7 +40,7 @@ all_stock = list()
 # all_stock_dict = dict()
 root_element = driver.find_elements_by_xpath(f'//*[@id="cross_rate_markets_stocks_1"]/tbody/tr')
 
-for i in range(len(root_element)):
+for i in range(5): #len(root_element)
     curr_element = root_element[i]
     stock = Stocks.pars(curr_element)
     all_stock.append(stock)
